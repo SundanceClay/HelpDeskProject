@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<HelpDeskDBContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("HelpDeskDb")));
+builder.Services.AddDbContext<HelpDeskDBContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("AppDb")));
 
 // Add services to the container.
 
