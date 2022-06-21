@@ -16,16 +16,10 @@ namespace HelpDeskProject.Controllers
             _context = context;
         }
 
-        [HttpGet("GetTicketsById")]
-        public IActionResult GetTicketsById()
+        [HttpGet("GetAllTicketsOderedById")]
+        public IActionResult GetAllTicketsOderedById()
         {
             return Ok(_context.Tickets.OrderBy(x => x.TicketId).ToList());
-        }
-
-        [HttpGet("GetTicketsByTitle")]
-        public IActionResult GetTicketsByTitle()
-        {
-            return Ok(_context.Tickets.OrderBy(x => x.Title).ToList());
         }
 
         [HttpPost("CreateTicket")]
