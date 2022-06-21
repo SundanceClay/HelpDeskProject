@@ -8,9 +8,12 @@ namespace HelpDeskProject.Models
 
         public int TicketId { get; set; }
         public string Title { get; set; }
+
+        public string RequestedBy { get; set; }
         public string Contents { get; set; }
         
-        public string Resolution { get; set; }
+        public string? Resolution { get; set; }
+        public string? ResolvedBy { get; set; }
         public bool Closed { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using HelpDeskProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HelpDeskProject.Migrations
 {
     [DbContext(typeof(HelpDeskDBContext))]
-    partial class HelpDeskDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220621014154_AddedFieldsToTicket")]
+    partial class AddedFieldsToTicket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -32,11 +32,12 @@ namespace HelpDeskProject.Controllers
         }
 
         [HttpPost("ResolveAndCloseTicket")]
-        public async Task<ActionResult<Ticket>> ResolveAndCloseTicket(int id, string resolution, bool closed)
+        public async Task<ActionResult<Ticket>> ResolveAndCloseTicket(int id, string resolution, string resolvedBy, bool closed)
         {
             Ticket ticket = new Ticket();
             ticket = _context.Tickets.FirstOrDefault(x => x.TicketId == id);
             ticket.Resolution = resolution;
+            ticket.ResolvedBy = resolvedBy;
             ticket.Closed = closed;
 
             _context.Tickets.Update(ticket);
