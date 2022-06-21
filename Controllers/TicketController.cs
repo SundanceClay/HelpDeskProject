@@ -29,18 +29,12 @@ namespace HelpDeskProject.Controllers
         }
 
         [HttpPost("CreateTicket")]
-        public async Task<ActionResult<Ticket>> CreateTicket(string title, string contents)
+        public async Task<ActionResult<Ticket>> CreateTicket(Ticket ticket)
         {
-            Ticket ticket = new Ticket();
-            ticket.Title = title;
-            ticket.Contents = contents;
-            ticket.Closed = false;
-
             _context.Tickets.Add(ticket);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTicket", new { Ticket_Id = ticket.TicketId }, ticket);                                                                               
-            
+            return Ok();                                                                               
         }
         /*
         [HttpGet("GetPetById")]
