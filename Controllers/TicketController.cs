@@ -60,47 +60,6 @@ namespace HelpDeskProject.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(bookMark);
-        }
-        /*
-        [HttpGet("GetPetById")]
-        public IActionResult GetPetById(int id)
-        {
-            Pet pet = DB.Pets.FirstOrDefault(x => x.PetId == id);
-
-            if(pet == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(pet);
-        }
-
-        [HttpGet("GetPetByName")]
-        public IActionResult GetPetByName(string name)
-        {
-            Pet pet = DB.Pets.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
-
-            if (pet == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(pet);
-        }
-
-        [HttpPost("AdoptPetById")]
-        public IActionResult SetPetForAdoption(int id)
-        {
-            Pet pet = DB.Pets.FirstOrDefault(x => x.PetId == id);
-
-            if (pet == null)
-            {
-                return NotFound();
-            }
-
-            pet.IsAdopted = true;
-
-            return Ok();
-        } */
+        }        
     }
 }
