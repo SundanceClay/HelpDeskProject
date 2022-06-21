@@ -36,6 +36,20 @@ namespace HelpDeskProject.Controllers
 
             return Ok();                                                                               
         }
+
+        [HttpPost("ResolveAndCloseTicket")]
+        public async Task<ActionResult<Ticket>> ResolveAndCloseTicket(int id, string resolution, bool closed)
+        {
+            Ticket ticket = new Ticket();
+            ticket = _context.Tickets.FirstOrDefault(x => x.TicketId == id);
+            ticket.Resolution = resolution;
+            ticket.Closed = closed;
+
+            _context.Tickets.Update(ticket);
+            await _context.SaveChangesAsync();
+
+            return Ok(ticket);
+        }
         /*
         [HttpGet("GetPetById")]
         public IActionResult GetPetById(int id)
