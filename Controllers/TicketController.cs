@@ -50,6 +50,22 @@ namespace HelpDeskProject.Controllers
 
             return Ok(ticket);
         }
+
+        [HttpPost("BookMarkTicket")]
+        public async Task<ActionResult<Ticket>> BookMarkTicket(int ticketId, int userId)
+        {
+            Ticket ticket = new Ticket();
+            BookMark bookMark= new BookMark();
+
+            ticket = _context.Tickets.FirstOrDefault(x => x.TicketId == ticketId);
+            bookMark.TicketId = ticketId;
+            bookMark.UserId = userId;
+
+            _context.BookMark.Add(bookMark);
+            await _context.SaveChangesAsync();
+
+            return Ok(bookMark);
+        }
         /*
         [HttpGet("GetPetById")]
         public IActionResult GetPetById(int id)
