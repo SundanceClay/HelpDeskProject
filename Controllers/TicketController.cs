@@ -37,7 +37,7 @@ namespace HelpDeskProject.Controllers
             return Ok();                                                                               
         }
 
-        [HttpPost("ResolveAndCloseTicket")]
+        [HttpPut("ResolveAndCloseTicket")]
         public async Task<ActionResult<Ticket>> ResolveAndCloseTicket(int id, string resolution, string resolvedBy, bool closed)
         {
             Ticket ticket = new Ticket();
@@ -53,19 +53,18 @@ namespace HelpDeskProject.Controllers
         }
 
         [HttpPost("BookMarkTicket")]
-        public async Task<ActionResult<Ticket>> BookMarkTicket(int ticketId, int userId)
+        public async Task<ActionResult<BookMark>> BookMarkTicket(int ticketId, int userId)
         {
-            Ticket ticket = new Ticket();
+            /* Ticket ticket = new Ticket(); */
             BookMark bookMark= new BookMark();
 
-            ticket = _context.Tickets.FirstOrDefault(x => x.TicketId == ticketId);
+           /* ticket = _context.Tickets.FirstOrDefault(x => x.TicketId == ticketId); */
             bookMark.TicketId = ticketId;
             bookMark.UserId = userId;
-
             _context.BookMark.Add(bookMark);
             await _context.SaveChangesAsync();
 
-            return Ok(bookMark);
+            return Ok();
         }        
     }
 }
